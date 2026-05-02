@@ -120,13 +120,7 @@ Inside `plugins.entries`:
 "plugins": {
   "entries": {
     "active-memory": {
-      "enabled": true,
-      "config": {
-        "agents": ["main"],
-        "queryMode": "recent",
-        "timeoutMs": 8000,
-        "persistTranscript": false
-      }
+      "enabled": true
     }
   }
 }
@@ -134,10 +128,7 @@ Inside `plugins.entries`:
 
 **Why:** The Active Memory plugin runs a memory sub-agent before every reply. It retrieves context from prior sessions — including the orchestrator identity (Step 4 below). Without this, the agent wakes fresh each session with no memory of its role.
 
-**queryMode options:**
-- `"message"` — latest message only, ~3s latency
-- `"recent"` — latest + short tail, ~8s latency (recommended)
-- `"full"` — entire thread, 15s+ latency (only for short threads)
+**Note:** The plugin schema does not accept additional config properties. Enable with `enabled: true` only; additional keys will cause config reload to fail.
 
 ---
 
